@@ -1,0 +1,28 @@
+#include <stdio.h>
+#define SIZE 5
+
+void select(int* array){
+	for (int i=0; i<SIZE-1; i++){
+		int min = array[i];
+		//printf("start: %d\n", min);
+		for (int j=i+1; j<SIZE; j++){
+			if (array[j]<min){
+				min = array[j];
+			}
+		}
+		//printf("min: %d\n", min);
+		if (min!=array[i]){
+			int tmp = array[i];
+			array[i] = min;
+			min = tmp;
+		}
+	}
+}
+
+int main(void){
+	int array[SIZE]={9,6,7,3,5};
+	select(array);
+	for (int i=0; i<SIZE; i++){
+		printf("[%d] : %d\n", i+1, array[i]);
+	}
+}

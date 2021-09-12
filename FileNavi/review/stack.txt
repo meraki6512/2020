@@ -1,0 +1,55 @@
+#include <stdio.h>
+#define STACK_SIZE 3
+
+int stack[STACK_SIZE];
+int top = -1;
+
+int isFull(){
+	//full=1, !full=0
+	if (top>=STACK_SIZE-1){
+		printf("FULL\n");
+		return 1;
+	}
+	return 0;
+}
+
+
+int isEmpty(){
+	//empty=1, !empty=0
+	if (top==-1){
+		printf("EMPTY\n");
+		return 1;
+	}
+	return 0;
+}
+
+void push(int data){
+	if (!isFull()){
+		stack[++top]=data;
+	}
+}
+
+int pop(){
+	if (!isEmpty()){
+		int tmp = stack[top--];
+		return tmp;
+	}
+}
+
+int main(){
+	push(1);
+	push(3);
+	pop();
+	pop();
+	//isEmpty
+	push(7);
+	push(1);
+	push(5);
+	//isFULL
+
+	if (!isEmpty){
+		for (int i=0; i<=top; i++){
+			printf("%d번째: %d\n",i+1,stack[i]);
+		}
+	}
+}

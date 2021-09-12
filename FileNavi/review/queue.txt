@@ -1,0 +1,58 @@
+#include <stdio.h>
+#define QUEUE_SIZE 4
+
+int queue[QUEUE_SIZE];
+int rear=-1, front=-1;
+
+int isFull(){
+	//full=1, !full=0
+	if (rear>=QUEUE_SIZE-1){
+		printf("Full\n");
+		return 1;
+	}
+	return 0;
+}
+
+int isEmpty(){
+	//empty=1, !empty=0
+	if (rear==front){
+		printf("Empty\n");
+		return 1;
+	}
+	return 0;
+}
+
+void push(int data){
+	if (!isFull()){
+		queue[rear++]=data;
+	}
+}
+
+int pop(){
+	if (!isEmpty()){
+		int tmp = queue[front++];
+		return tmp;
+	}
+}
+
+void print_all(){
+	printf("\n---PRINT_ALL---\n");
+	if (!isEmpty()){
+		for (int i=front; i<rear; i++){
+			printf("%d\n",queue[i]);
+		}
+	}
+}
+
+int main(){
+	push(1);
+	push(3);
+	push(7);
+	//isFull
+	pop();
+	pop();
+	pop();
+	//isEmpty
+	push(4);
+	print_all();
+}

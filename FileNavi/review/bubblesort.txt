@@ -1,0 +1,33 @@
+//버블정렬
+
+#include <stdio.h>
+
+void bubble_sort(int array[]){
+	
+	for (int i=0; i<7; i++){
+		printf("%d회전\n",i);
+		for (int j=0; j<7-i; j++){
+			if (array[j]>array[j+1]){
+				int tmp = array[j];
+				array[j] = array[j+1];
+				array[j+1] = tmp;
+			}
+		}
+
+		for (int j=0;j<7;j++){
+			printf("%d ",array[j]);
+		}
+
+		printf("\n");
+	}
+}
+
+int main(void){
+
+	int array[7];
+	printf("---7개 숫자 입력---\n");
+	scanf("%d%d%d%d%d%d%d",&array[0],&array[1],&array[2],&array[3],&array[4],&array[5],&array[6]);
+
+	bubble_sort(array);
+
+}

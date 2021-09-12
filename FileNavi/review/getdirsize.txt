@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <dirent.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+
+void main(int argc, char *argv[]){
+	
+	DIR* od;
+	struct dirent *dir;
+	struct stat statbuf;
+
+	//main argument cnt check
+	if(argc<2){
+		fprintf(stderr,"Usage: ./unistd_dir path\n");
+		exit(1);
+	}
+
+	//dir open
+	if ((od = opendir(argv[1]))==NULL){
+		perror("Fail\n");
+		exit(1);
+	}
+
+	//dir path & printf
+	while((dir=readdir(od))!=NULL){
+		printf("name: %s, ", dir->d_name);
+		if (!stat(dir->d_name, &statbuf)){
+			printf("size: %ld bytes\n", statbuf.st_size);
+		}
+		else
+		{
+			printf("size: --- \n");
+		}
+	}
+
+	//dir class
+	closedir(od);
+}

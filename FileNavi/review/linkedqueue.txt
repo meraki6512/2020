@@ -1,0 +1,74 @@
+//linked queue
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+	int data;
+	struct Node * next;
+}NODE;
+
+NODE * rear = NULL;
+NODE * front = NULL;
+
+void add(int d){
+	NODE * newnode = (NODE*)malloc(sizeof(NODE));
+	newnode->data = d;
+	newnode->next=NULL;
+
+	if(front==NULL){
+		front = newnode;
+		rear = newnode;
+		return;
+	}
+
+	rear->next = newnode;
+	rear = newnode;
+}
+
+int delete(){
+	int d;
+	if (front==NULL){
+		printf("NULL\n");
+		return -1;
+	}
+	else if (front==rear){
+		d = front->data;
+		front=NULL;
+		free(rear);
+	}
+	else{
+		NODE * tmp = (NODE*)malloc(sizeof(NODE));
+		tmp = front;
+		front = front -> next;
+		d = tmp -> data;
+		free(tmp);
+	}
+	return d;
+}
+
+void print_list(){
+	printf("---PRINT---\n");
+	NODE * horse = front;
+	while (horse!=NULL){
+		printf("%d",horse->data);
+		if (horse->next!=NULL){
+			printf("->");
+		}
+		horse=horse->next;
+	}
+	printf("\n");
+}
+
+int main () {
+	add(2);
+	add(5);
+	add(7);
+	add(1);
+	add(9);
+	print_list();
+	printf("delete: %d\n",delete());
+	printf("delete: %d\n",delete());
+	printf("delete: %d\n",delete());
+	print_list();
+}
