@@ -1,0 +1,4 @@
+2020 winter project 2
+language: python
+team (6)
+Learn the elements necessary to create an automation system such as python, Sql, and telnet by making prototypes.
