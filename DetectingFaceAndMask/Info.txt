@@ -1,0 +1,4 @@
+2020 summer project 1
+language: python
+team (4)
+Following the "face-recognition-program (detecting whether a mask is worn)", which interested in due to covid19, and try using various libraries such as dlib, opencv, etc.
