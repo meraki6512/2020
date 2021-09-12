@@ -1,0 +1,4 @@
+2020 winter project 2 (2020->2021winter)
+language: c
+team (3)
+To review the concepts on data structure learned in Data Structure class
